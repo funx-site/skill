@@ -55,10 +55,15 @@ Any skill-compatible runtime can load `skills/funx/SKILL.md`. Point your skills 
 
 ## The funx CLI
 
-This skill drives [`@funx-site/cli`](https://github.com/funx-site/cli):
+This skill drives the planned package `@funx-site/cli` ([funx-site/cli](https://github.com/funx-site/cli)). It is not on npm yet, and it needs Node.js >= 20.
 
 ```bash
-npm install -g @funx-site/cli
+# before publish
+npx github:funx-site/cli --help
+# or: git clone https://github.com/funx-site/cli && cd cli && npm install && npm link
+
+# after publish
+npm i -g @funx-site/cli
 funx --help
 ```
 

@@ -15,13 +15,22 @@ This skill is only for the user's own workers. Do not deploy or operate the plat
 
 ## Setup
 
-The CLI is published as `@funx-site/cli` and runs on Node.js >= 18.
+The package name is planned as `@funx-site/cli`. It is **not published to npm yet**. The CLI requires Node.js >= 20. That is the CLI engine. The worker runtime still exposes Node 18 globals (see the table below); the CLI does not run on Node 18.
+
+Until it is on npm, install from https://github.com/funx-site/cli with `npx` or `npm link`:
 
 ```bash
-npm install -g @funx-site/cli
+npx github:funx-site/cli --help
 
-# Or run without installing
-npx @funx-site/cli <command>
+# or clone and link the bin
+git clone https://github.com/funx-site/cli
+cd cli && npm install && npm link
+```
+
+After it is published:
+
+```bash
+npm i -g @funx-site/cli
 ```
 
 Verify it before relying on it:
@@ -30,7 +39,7 @@ Verify it before relying on it:
 funx --help
 ```
 
-If `funx` is not found, use `npx @funx-site/cli` for every command below. The published CLI may not implement every flag listed here; `--help` wins.
+If `funx` is not found, use the `npx` or `npm link` form above for every command below. If a flag in this skill is rejected, `--help` wins.
 
 ## Authentication (human only)
 
@@ -169,7 +178,7 @@ Only manage workers the logged-in user owns. Stop if a command requires platform
 - **Package too large** — zip must be ≤ 6 MB. `node_modules` counts.
 - **`funx dev` exits immediately** — the entry threw while loading, or the directory path is wrong.
 - **Command hangs on login** — the human still has to finish sign-in. Do not keep waiting.
-- **`funx: command not found`** — `npx @funx-site/cli <command>`, or `npm install -g @funx-site/cli`.
+- **`funx: command not found`** — `@funx-site/cli` is not on npm yet. Use `npx` or `npm link` from https://github.com/funx-site/cli. After publish: `npm i -g @funx-site/cli`. The CLI needs Node.js >= 20.
 - **A flag in this skill is rejected** — run `funx --help` and follow https://github.com/funx-site/cli.
 
 ## Out of scope
